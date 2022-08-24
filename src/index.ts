@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 
-console.log(uuidv4());
 type Task = {
   id: string;
   title: string;
@@ -14,7 +13,6 @@ const tasks: Task[] = loadTasks();
 tasks.forEach(addListItem);
 
 form?.addEventListener('submit', (e) => {
-  console.log('submit...');
   e.preventDefault();
   if (input?.value == '' || input?.value == null) return;
   const newTask = {
@@ -36,7 +34,6 @@ function addListItem(task: Task) {
   const checkbox = document.createElement('input');
   checkbox.addEventListener('change', () => {
     task.completed = checkbox.checked;
-    console.log(tasks);
     saveTasks();
   });
   checkbox.type = 'checkbox';
@@ -48,7 +45,6 @@ function addListItem(task: Task) {
 }
 
 function saveTasks() {
-  console.log('saving..');
   localStorage.setItem('TASKS', JSON.stringify(tasks));
 }
 
